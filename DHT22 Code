@@ -1,25 +1,3 @@
-DHT Node Red.txt
-Who has access
-Not shared
-System properties
-Type
-Text
-Size
-27 KB
-Storage used
-27 KB
-Location
-DHT22
-Owner
-me
-Modified
-Dec 31, 2021 by me
-Opened
-Dec 31, 2021 by me
-Created
-Dec 31, 2021 with Google Drive Web
-Add a description
-Viewers can download
 [
     {
         "id": "dbf64854dfe1af6c",
@@ -30,34 +8,6 @@ Viewers can download
         "env": []
     },
     {
-        "id": "2f36ffc21f4d245a",
-        "type": "inject",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "30",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 90,
-        "y": 560,
-        "wires": [
-            [
-                "43a5f5a270d584a2",
-                "986dcf914ffaaa01",
-                "36ce9f46e34e4061",
-                "881dba664ce1f0c0"
-            ]
-        ]
-    },
-    {
         "id": "43a5f5a270d584a2",
         "type": "rpi-dht22",
         "z": "dbf64854dfe1af6c",
@@ -66,12 +16,11 @@ Viewers can download
         "dht": 22,
         "pintype": "0",
         "pin": 4,
-        "x": 220,
-        "y": 260,
+        "x": 460,
+        "y": 380,
         "wires": [
             [
-                "f339062b93e72f84",
-                "16e477023e88e84e"
+                "f339062b93e72f84"
             ]
         ]
     },
@@ -84,12 +33,11 @@ Viewers can download
         "dht": 22,
         "pintype": "0",
         "pin": "17",
-        "x": 280,
-        "y": 420,
+        "x": 460,
+        "y": 440,
         "wires": [
             [
-                "5940bbee58df002d",
-                "245d240daa5399a0"
+                "5940bbee58df002d"
             ]
         ]
     },
@@ -99,8 +47,8 @@ Viewers can download
         "z": "dbf64854dfe1af6c",
         "mydb": "d423deaf6e319b2e",
         "name": "DHT22",
-        "x": 1120,
-        "y": 500,
+        "x": 1320,
+        "y": 460,
         "wires": [
             []
         ]
@@ -110,14 +58,14 @@ Viewers can download
         "type": "function",
         "z": "dbf64854dfe1af6c",
         "name": "INSERT DATA",
-        "func": "msg.topic = \"insert into Device1 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
+        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device1 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 260,
+        "x": 900,
+        "y": 380,
         "wires": [
             [
                 "7420af185f680d7d"
@@ -135,8 +83,8 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 260,
+        "x": 670,
+        "y": 380,
         "wires": [
             [
                 "f8313f0ebf9d730f"
@@ -148,14 +96,14 @@ Viewers can download
         "type": "function",
         "z": "dbf64854dfe1af6c",
         "name": "INSERT DATA",
-        "func": "msg.topic = \"insert into Device2 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
+        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device2 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 320,
+        "x": 900,
+        "y": 440,
         "wires": [
             [
                 "7420af185f680d7d"
@@ -173,40 +121,13 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 340,
+        "x": 670,
+        "y": 440,
         "wires": [
             [
                 "d35254e2c8f31fbc"
             ]
         ]
-    },
-    {
-        "id": "e6a38785bc2a476e",
-        "type": "ui_gauge",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "161ebfc5.d4da2",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 840,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "16e477023e88e84e",
@@ -219,72 +140,18 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 460,
-        "y": 140,
+        "x": 880,
+        "y": 900,
         "wires": [
             [
-                "e6a38785bc2a476e",
-                "5a2f7bdffd5c301d"
+                "242d7066b916a393",
+                "10171e75f3c95834"
             ],
             [
-                "7b3704a32467c43c",
-                "2686b97002773843"
+                "e90c0e02a1bc8a21",
+                "2632f507360fc3d3"
             ]
         ]
-    },
-    {
-        "id": "7b3704a32467c43c",
-        "type": "ui_gauge",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "161ebfc5.d4da2",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 750,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "5bdaf2cec56e6add",
-        "type": "ui_gauge",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "bcbd33bce2b5bc38",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 680,
-        "y": 380,
-        "wires": []
     },
     {
         "id": "245d240daa5399a0",
@@ -297,59 +164,32 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 460,
-        "y": 460,
+        "x": 880,
+        "y": 1120,
         "wires": [
             [
-                "5bdaf2cec56e6add",
-                "d18fd31fe8d6bb63"
+                "1e45118534d2cd96",
+                "c1246f12dc075378"
             ],
             [
-                "d1551ceba5ab7c03",
-                "bc29e201b6a1ccec"
+                "cec4d014c0ab70d2",
+                "644fc050d2d3afca"
             ]
         ]
-    },
-    {
-        "id": "d1551ceba5ab7c03",
-        "type": "ui_gauge",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "bcbd33bce2b5bc38",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 570,
-        "y": 520,
-        "wires": []
     },
     {
         "id": "9d73f6ad3d9f31ff",
         "type": "function",
         "z": "dbf64854dfe1af6c",
         "name": "INSERT DATA",
-        "func": "msg.topic = \"insert into Device3 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
+        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device3 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
-        "y": 580,
+        "x": 900,
+        "y": 500,
         "wires": [
             [
                 "7420af185f680d7d"
@@ -367,8 +207,8 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 580,
+        "x": 670,
+        "y": 500,
         "wires": [
             [
                 "9d73f6ad3d9f31ff"
@@ -380,14 +220,14 @@ Viewers can download
         "type": "function",
         "z": "dbf64854dfe1af6c",
         "name": "INSERT DATA",
-        "func": "msg.topic = \"insert into Device4 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
+        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device4 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 840,
+        "x": 880,
+        "y": 560,
         "wires": [
             [
                 "7420af185f680d7d"
@@ -405,8 +245,8 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
-        "y": 840,
+        "x": 670,
+        "y": 560,
         "wires": [
             [
                 "e35a7bb13e514440"
@@ -422,12 +262,11 @@ Viewers can download
         "dht": 22,
         "pintype": "0",
         "pin": "18",
-        "x": 300,
-        "y": 620,
+        "x": 460,
+        "y": 500,
         "wires": [
             [
-                "1dcec78adffcdc55",
-                "760eb177809406f2"
+                "1dcec78adffcdc55"
             ]
         ]
     },
@@ -440,41 +279,13 @@ Viewers can download
         "dht": 22,
         "pintype": "0",
         "pin": "23",
-        "x": 340,
-        "y": 880,
+        "x": 460,
+        "y": 560,
         "wires": [
             [
-                "1120a5a6c56601d5",
-                "cb9ca156c9c374eb"
+                "1120a5a6c56601d5"
             ]
         ]
-    },
-    {
-        "id": "a8701ca1bff76a93",
-        "type": "ui_gauge",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "953a8f50dc05102a",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 560,
-        "y": 620,
-        "wires": []
     },
     {
         "id": "760eb177809406f2",
@@ -487,25 +298,276 @@ Viewers can download
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 700,
+        "x": 880,
+        "y": 1340,
         "wires": [
             [
-                "a8701ca1bff76a93",
-                "70e20d44e0389fbf"
+                "fbdcfd8b7262d585",
+                "f5169b68f51b4121"
             ],
             [
-                "143e1b32d7019bd3",
-                "d82bcacbbc5753e4"
+                "3f74a0e87f34fd3e",
+                "fed62a8e5f52c38e"
             ]
         ]
     },
     {
-        "id": "143e1b32d7019bd3",
+        "id": "cb9ca156c9c374eb",
+        "type": "function",
+        "z": "dbf64854dfe1af6c",
+        "name": "Temp and Humidity Display",
+        "func": "var temp = {};\nvar humid = {};\n\n\ntemp.payload = msg.payload;\ntemp.topic='Temp';\nhumid.payload = msg.humidity;\nhumid.topic='Humid';\n\n\nreturn [humid, temp];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 1600,
+        "wires": [
+            [
+                "940abae0498a36a8",
+                "f217d83952ae1b6c"
+            ],
+            [
+                "fe2da98d427526d1",
+                "e2f2cd71aa10a4f2"
+            ]
+        ]
+    },
+    {
+        "id": "a57d79c5c1e41b9f",
+        "type": "remote-access",
+        "z": "dbf64854dfe1af6c",
+        "confignode": "5c0970eae8f917ba",
+        "name": "",
+        "verbose": 0,
+        "x": 160,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4474a18ace9acf0",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Access Remotely",
+        "info": "// to access Node Red remotely",
+        "x": 160,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "23c59b9c56792955",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Database",
+        "info": "// to store the data from the DHT22 sensor.",
+        "x": 1300,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3d8685d21965b597",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 870,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "602169eb6e2947a5",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_1",
+        "dht": 22,
+        "pintype": "0",
+        "pin": 4,
+        "x": 640,
+        "y": 900,
+        "wires": [
+            [
+                "16e477023e88e84e"
+            ]
+        ]
+    },
+    {
+        "id": "85532eb1ec01c126",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_2",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "17",
+        "x": 640,
+        "y": 1120,
+        "wires": [
+            [
+                "245d240daa5399a0"
+            ]
+        ]
+    },
+    {
+        "id": "a8fc75ccaaac9ce6",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_3",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "18",
+        "x": 640,
+        "y": 1340,
+        "wires": [
+            [
+                "760eb177809406f2"
+            ]
+        ]
+    },
+    {
+        "id": "c108c4f187ed9837",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_4",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "23",
+        "x": 640,
+        "y": 1600,
+        "wires": [
+            [
+                "cb9ca156c9c374eb"
+            ]
+        ]
+    },
+    {
+        "id": "bfd1159a4dbf4dd1",
+        "type": "inject",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 210,
+        "y": 900,
+        "wires": [
+            [
+                "602169eb6e2947a5",
+                "85532eb1ec01c126",
+                "a8fc75ccaaac9ce6",
+                "c108c4f187ed9837"
+            ]
+        ]
+    },
+    {
+        "id": "6fb14cba07f1114c",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Send data to the chart and gauge",
+        "info": "// Inject every 1 second for see data in chart and gauge.",
+        "x": 630,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "f4fb12b20e7a2e05",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Send data to Database",
+        "info": "// send data to the database from DHT22 sensors every 30 seconds",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2f36ffc21f4d245a",
+        "type": "inject",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 460,
+        "wires": [
+            [
+                "43a5f5a270d584a2",
+                "986dcf914ffaaa01",
+                "36ce9f46e34e4061",
+                "881dba664ce1f0c0"
+            ]
+        ]
+    },
+    {
+        "id": "eb56f0f3a5f975d1",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Interval 30 seconds",
+        "info": "// To log in the data using interval for 30 seconds.",
+        "x": 130,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "165463519e6bc353",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 890,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "ee541efa44f01a03",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 850,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "bdd7b8bdb5ac4b23",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 790,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "e90c0e02a1bc8a21",
         "type": "ui_gauge",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "953a8f50dc05102a",
+        "group": "2219bda37fd9a1b2",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -523,17 +585,61 @@ Viewers can download
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 570,
-        "y": 760,
+        "x": 1150,
+        "y": 960,
         "wires": []
     },
     {
-        "id": "8dee571bc70fccfd",
+        "id": "2632f507360fc3d3",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "2219bda37fd9a1b2",
+        "order": 2,
+        "width": 6,
+        "height": 4,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "242d7066b916a393",
         "type": "ui_gauge",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "8e1be5fbf28d480f",
-        "order": 0,
+        "group": "2219bda37fd9a1b2",
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -550,40 +656,131 @@ Viewers can download
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 740,
-        "y": 880,
+        "x": 1120,
+        "y": 840,
         "wires": []
     },
     {
-        "id": "cb9ca156c9c374eb",
-        "type": "function",
+        "id": "10171e75f3c95834",
+        "type": "ui_chart",
         "z": "dbf64854dfe1af6c",
-        "name": "Temp and Humidity Display",
-        "func": "var temp = {};\nvar humid = {};\n\n\ntemp.payload = msg.payload;\ntemp.topic='Temp';\nhumid.payload = msg.humidity;\nhumid.topic='Humid';\n\n\nreturn [humid, temp];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 480,
-        "y": 960,
+        "name": "",
+        "group": "2219bda37fd9a1b2",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 880,
         "wires": [
-            [
-                "8dee571bc70fccfd",
-                "c8f7bdafbcd045c4"
-            ],
-            [
-                "4a9aa54ea9f91984",
-                "34127dd5fc3d6f2c"
-            ]
+            []
         ]
     },
     {
-        "id": "4a9aa54ea9f91984",
+        "id": "1e45118534d2cd96",
         "type": "ui_gauge",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "8e1be5fbf28d480f",
+        "group": "081d59f62d4ef19b",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1120,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "c1246f12dc075378",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "081d59f62d4ef19b",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cec4d014c0ab70d2",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "081d59f62d4ef19b",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -601,31 +798,31 @@ Viewers can download
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 670,
-        "y": 1020,
+        "x": 1130,
+        "y": 1160,
         "wires": []
     },
     {
-        "id": "5a2f7bdffd5c301d",
+        "id": "644fc050d2d3afca",
         "type": "ui_chart",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "cda257d4be8f4b7b",
-        "order": 0,
+        "group": "081d59f62d4ef19b",
+        "order": 2,
         "width": 0,
         "height": 0,
-        "label": "Humidity",
+        "label": "",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
         "removeOlderPoints": "",
-        "removeOlderUnit": "1",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -643,33 +840,60 @@ Viewers can download
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1040,
-        "y": 120,
+        "x": 1110,
+        "y": 1200,
         "wires": [
             []
         ]
     },
     {
-        "id": "2686b97002773843",
+        "id": "fbdcfd8b7262d585",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "9bdf8d5e3e644d86",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1100,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "f5169b68f51b4121",
         "type": "ui_chart",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "cda257d4be8f4b7b",
-        "order": 0,
+        "group": "9bdf8d5e3e644d86",
+        "order": 4,
         "width": 0,
         "height": 0,
-        "label": "Temperature",
+        "label": "",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
         "removeOlderPoints": "",
-        "removeOlderUnit": "1",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -687,33 +911,60 @@ Viewers can download
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1030,
-        "y": 160,
+        "x": 1090,
+        "y": 1320,
         "wires": [
             []
         ]
     },
     {
-        "id": "d18fd31fe8d6bb63",
+        "id": "3f74a0e87f34fd3e",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "9bdf8d5e3e644d86",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1110,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "fed62a8e5f52c38e",
         "type": "ui_chart",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "bc56c68f931debff",
-        "order": 0,
+        "group": "9bdf8d5e3e644d86",
+        "order": 2,
         "width": 0,
         "height": 0,
-        "label": "Humidity",
+        "label": "",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
         "removeOlderPoints": "",
-        "removeOlderUnit": "1",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -731,33 +982,60 @@ Viewers can download
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 800,
-        "y": 420,
+        "x": 1090,
+        "y": 1420,
         "wires": [
             []
         ]
     },
     {
-        "id": "bc29e201b6a1ccec",
+        "id": "940abae0498a36a8",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "353e13fa955ff818",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1100,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "f217d83952ae1b6c",
         "type": "ui_chart",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "bc56c68f931debff",
-        "order": 0,
+        "group": "353e13fa955ff818",
+        "order": 4,
         "width": 0,
         "height": 0,
-        "label": "Temperature",
+        "label": "",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
         "removeOlderPoints": "",
-        "removeOlderUnit": "1",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -775,33 +1053,60 @@ Viewers can download
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 770,
-        "y": 480,
+        "x": 1090,
+        "y": 1560,
         "wires": [
             []
         ]
     },
     {
-        "id": "70e20d44e0389fbf",
+        "id": "fe2da98d427526d1",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "353e13fa955ff818",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1110,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "e2f2cd71aa10a4f2",
         "type": "ui_chart",
         "z": "dbf64854dfe1af6c",
         "name": "",
-        "group": "932d58db497744b8",
-        "order": 0,
+        "group": "353e13fa955ff818",
+        "order": 2,
         "width": 0,
         "height": 0,
-        "label": "Humidity",
+        "label": "",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
         "removeOlderPoints": "",
-        "removeOlderUnit": "1",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -819,153 +1124,8 @@ Viewers can download
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 760,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d82bcacbbc5753e4",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "932d58db497744b8",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "label": "Temperature",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "1",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 750,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c8f7bdafbcd045c4",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "c0b01c39894e741a",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "label": "Humidity",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "1",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 920,
-        "y": 920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "34127dd5fc3d6f2c",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "c0b01c39894e741a",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "label": "Temperature",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "30",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "1",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 910,
-        "y": 980,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a57d79c5c1e41b9f",
-        "type": "remote-access",
-        "z": "dbf64854dfe1af6c",
-        "confignode": "5c0970eae8f917ba",
-        "name": "",
-        "verbose": 0,
-        "x": 230,
-        "y": 60,
+        "x": 1090,
+        "y": 1660,
         "wires": [
             []
         ]
@@ -981,94 +1141,6 @@ Viewers can download
         "charset": "UTF8"
     },
     {
-        "id": "161ebfc5.d4da2",
-        "type": "ui_group",
-        "name": "Device_1",
-        "tab": "2f7ea51a.3ab7ea",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "bcbd33bce2b5bc38",
-        "type": "ui_group",
-        "name": "Device_2",
-        "tab": "2f7ea51a.3ab7ea",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "953a8f50dc05102a",
-        "type": "ui_group",
-        "name": "Device_3",
-        "tab": "2f7ea51a.3ab7ea",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "8e1be5fbf28d480f",
-        "type": "ui_group",
-        "name": "Device_4",
-        "tab": "2f7ea51a.3ab7ea",
-        "order": 4,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "cda257d4be8f4b7b",
-        "type": "ui_group",
-        "name": "Device_1",
-        "tab": "31f6a297dcefe2e6",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "bc56c68f931debff",
-        "type": "ui_group",
-        "name": "Device_2",
-        "tab": "31f6a297dcefe2e6",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "932d58db497744b8",
-        "type": "ui_group",
-        "name": "Device_3",
-        "tab": "31f6a297dcefe2e6",
-        "order": 4,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "c0b01c39894e741a",
-        "type": "ui_group",
-        "name": "Device_4",
-        "tab": "31f6a297dcefe2e6",
-        "order": 5,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "5c0970eae8f917ba",
         "type": "remote-config",
         "name": "Node-RED UI",
@@ -1081,17 +1153,53 @@ Viewers can download
         "region": "de"
     },
     {
-        "id": "2f7ea51a.3ab7ea",
-        "type": "ui_tab",
-        "name": "DHT_Gauge",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
+        "id": "2219bda37fd9a1b2",
+        "type": "ui_group",
+        "name": "Device_1",
+        "tab": "f378c034cf85ecf1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
-        "id": "31f6a297dcefe2e6",
+        "id": "081d59f62d4ef19b",
+        "type": "ui_group",
+        "name": "Device_2",
+        "tab": "f378c034cf85ecf1",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9bdf8d5e3e644d86",
+        "type": "ui_group",
+        "name": "Device_3",
+        "tab": "f378c034cf85ecf1",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "353e13fa955ff818",
+        "type": "ui_group",
+        "name": "Device_4",
+        "tab": "f378c034cf85ecf1",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f378c034cf85ecf1",
         "type": "ui_tab",
-        "name": "DHT_Chart",
+        "name": "DHT22",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
