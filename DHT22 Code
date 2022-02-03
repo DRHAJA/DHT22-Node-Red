@@ -2,44 +2,10 @@
     {
         "id": "dbf64854dfe1af6c",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Jln_Utara_DHT22",
         "disabled": false,
         "info": "",
         "env": []
-    },
-    {
-        "id": "43a5f5a270d584a2",
-        "type": "rpi-dht22",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "topic": "Device_1",
-        "dht": 22,
-        "pintype": "0",
-        "pin": 4,
-        "x": 460,
-        "y": 380,
-        "wires": [
-            [
-                "f339062b93e72f84"
-            ]
-        ]
-    },
-    {
-        "id": "986dcf914ffaaa01",
-        "type": "rpi-dht22",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "topic": "Device_2",
-        "dht": 22,
-        "pintype": "0",
-        "pin": "17",
-        "x": 460,
-        "y": 440,
-        "wires": [
-            [
-                "5940bbee58df002d"
-            ]
-        ]
     },
     {
         "id": "7420af185f680d7d",
@@ -47,86 +13,10 @@
         "z": "dbf64854dfe1af6c",
         "mydb": "d423deaf6e319b2e",
         "name": "DHT22",
-        "x": 1320,
-        "y": 460,
+        "x": 940,
+        "y": 240,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "f8313f0ebf9d730f",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "INSERT DATA",
-        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device1 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 900,
-        "y": 380,
-        "wires": [
-            [
-                "7420af185f680d7d"
-            ]
-        ]
-    },
-    {
-        "id": "f339062b93e72f84",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "Temp and Humidity",
-        "func": "var temp = {};\nvar humid = {};\n\n\ntemp.payload = msg.payload;\ntemp.topic='Temp';\nhumid.payload = msg.humidity;\nhumid.topic='Humid';\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 670,
-        "y": 380,
-        "wires": [
-            [
-                "f8313f0ebf9d730f"
-            ]
-        ]
-    },
-    {
-        "id": "d35254e2c8f31fbc",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "INSERT DATA",
-        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device2 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 900,
-        "y": 440,
-        "wires": [
-            [
-                "7420af185f680d7d"
-            ]
-        ]
-    },
-    {
-        "id": "5940bbee58df002d",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "Temp and Humidity",
-        "func": "var temp = {};\nvar humid = {};\n\n\ntemp.payload = msg.payload;\ntemp.topic='Temp';\nhumid.payload = msg.humidity;\nhumid.topic='Humid';\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 670,
-        "y": 440,
-        "wires": [
-            [
-                "d35254e2c8f31fbc"
-            ]
         ]
     },
     {
@@ -174,116 +64,6 @@
             [
                 "cec4d014c0ab70d2",
                 "644fc050d2d3afca"
-            ]
-        ]
-    },
-    {
-        "id": "9d73f6ad3d9f31ff",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "INSERT DATA",
-        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device3 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 900,
-        "y": 500,
-        "wires": [
-            [
-                "7420af185f680d7d"
-            ]
-        ]
-    },
-    {
-        "id": "1dcec78adffcdc55",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "Temp and Humidity",
-        "func": "var temp = {};\nvar humid = {};\n\n\ntemp.payload = msg.payload;\ntemp.topic='Temp';\nhumid.payload = msg.humidity;\nhumid.topic='Humid';\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 670,
-        "y": 500,
-        "wires": [
-            [
-                "9d73f6ad3d9f31ff"
-            ]
-        ]
-    },
-    {
-        "id": "e35a7bb13e514440",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "INSERT DATA",
-        "func": "// insert the data to database (DHT22)\nmsg.topic = \"insert into Device4 (Temperature,Humidity) values ('\"+ msg.payload+\"', '\"+msg.humidity+\"')\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 880,
-        "y": 560,
-        "wires": [
-            [
-                "7420af185f680d7d"
-            ]
-        ]
-    },
-    {
-        "id": "1120a5a6c56601d5",
-        "type": "function",
-        "z": "dbf64854dfe1af6c",
-        "name": "Temp and Humidity",
-        "func": "var temp = {};\nvar humid = {};\n\n\ntemp.payload = msg.payload;\ntemp.topic='Temp';\nhumid.payload = msg.humidity;\nhumid.topic='Humid';\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 670,
-        "y": 560,
-        "wires": [
-            [
-                "e35a7bb13e514440"
-            ]
-        ]
-    },
-    {
-        "id": "36ce9f46e34e4061",
-        "type": "rpi-dht22",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "topic": "Device_3",
-        "dht": 22,
-        "pintype": "0",
-        "pin": "18",
-        "x": 460,
-        "y": 500,
-        "wires": [
-            [
-                "1dcec78adffcdc55"
-            ]
-        ]
-    },
-    {
-        "id": "881dba664ce1f0c0",
-        "type": "rpi-dht22",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "topic": "Device_4",
-        "dht": 22,
-        "pintype": "0",
-        "pin": "23",
-        "x": 460,
-        "y": 560,
-        "wires": [
-            [
-                "1120a5a6c56601d5"
             ]
         ]
     },
@@ -336,36 +116,13 @@
         ]
     },
     {
-        "id": "a57d79c5c1e41b9f",
-        "type": "remote-access",
-        "z": "dbf64854dfe1af6c",
-        "confignode": "5c0970eae8f917ba",
-        "name": "",
-        "verbose": 0,
-        "x": 160,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c4474a18ace9acf0",
-        "type": "comment",
-        "z": "dbf64854dfe1af6c",
-        "name": "Access Remotely",
-        "info": "// to access Node Red remotely",
-        "x": 160,
-        "y": 40,
-        "wires": []
-    },
-    {
         "id": "23c59b9c56792955",
         "type": "comment",
         "z": "dbf64854dfe1af6c",
         "name": "Database",
         "info": "// to store the data from the DHT22 sensor.",
-        "x": 1300,
-        "y": 420,
+        "x": 920,
+        "y": 200,
         "wires": []
     },
     {
@@ -377,6 +134,758 @@
         "x": 870,
         "y": 1160,
         "wires": []
+    },
+    {
+        "id": "bfd1159a4dbf4dd1",
+        "type": "inject",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 210,
+        "y": 900,
+        "wires": [
+            [
+                "602169eb6e2947a5",
+                "85532eb1ec01c126",
+                "a8fc75ccaaac9ce6",
+                "c108c4f187ed9837"
+            ]
+        ]
+    },
+    {
+        "id": "6fb14cba07f1114c",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Send data to the chart and gauge",
+        "info": "// Inject every 1 second for see data in chart and gauge.",
+        "x": 670,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "f4fb12b20e7a2e05",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Send data to Database",
+        "info": "// send data to the database from DHT22 sensors every 30 seconds",
+        "x": 680,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "2f36ffc21f4d245a",
+        "type": "inject",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "43a5f5a270d584a2",
+                "986dcf914ffaaa01",
+                "36ce9f46e34e4061",
+                "881dba664ce1f0c0"
+            ]
+        ]
+    },
+    {
+        "id": "eb56f0f3a5f975d1",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Interval 20 seconds",
+        "info": "// To log in the data using interval for 30 seconds.",
+        "x": 150,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "165463519e6bc353",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 890,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "ee541efa44f01a03",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 850,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "bdd7b8bdb5ac4b23",
+        "type": "comment",
+        "z": "dbf64854dfe1af6c",
+        "name": "Display the Data to Dashboard",
+        "info": "// display the data of DHT22 sensor in gauge and chart.",
+        "x": 790,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "e90c0e02a1bc8a21",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "0dad173bd8838df7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1150,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "242d7066b916a393",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "0dad173bd8838df7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1100,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "1e45118534d2cd96",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "10fb14fa6184d819",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1120,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "cec4d014c0ab70d2",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "10fb14fa6184d819",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1130,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "fbdcfd8b7262d585",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "5df125248bbcd45a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1100,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "3f74a0e87f34fd3e",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "5df125248bbcd45a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1110,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "940abae0498a36a8",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "536fcc52f4b4f3c8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1100,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "fe2da98d427526d1",
+        "type": "ui_gauge",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "536fcc52f4b4f3c8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1110,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "2632f507360fc3d3",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "0dad173bd8838df7",
+        "order": 2,
+        "width": 6,
+        "height": 4,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "10171e75f3c95834",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "0dad173bd8838df7",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1246f12dc075378",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "10fb14fa6184d819",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "644fc050d2d3afca",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "10fb14fa6184d819",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f5169b68f51b4121",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "5df125248bbcd45a",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1090,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fed62a8e5f52c38e",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "5df125248bbcd45a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1090,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f217d83952ae1b6c",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "536fcc52f4b4f3c8",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1090,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2f2cd71aa10a4f2",
+        "type": "ui_chart",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "group": "536fcc52f4b4f3c8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1090,
+        "y": 1660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "43a5f5a270d584a2",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_1",
+        "dht": 22,
+        "pintype": "0",
+        "pin": 4,
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "69738e1b3f3b302a"
+            ]
+        ]
+    },
+    {
+        "id": "986dcf914ffaaa01",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_2",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "17",
+        "x": 460,
+        "y": 220,
+        "wires": [
+            [
+                "f7acb4f0e16111e6"
+            ]
+        ]
+    },
+    {
+        "id": "36ce9f46e34e4061",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_3",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "18",
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "975f6fcf073d6e57"
+            ]
+        ]
+    },
+    {
+        "id": "881dba664ce1f0c0",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_4",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "23",
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "c5e9f1f4aaa791a6"
+            ]
+        ]
     },
     {
         "id": "602169eb6e2947a5",
@@ -447,7 +956,7 @@
         ]
     },
     {
-        "id": "bfd1159a4dbf4dd1",
+        "id": "eb253f1619c02e0e",
         "type": "inject",
         "z": "dbf64854dfe1af6c",
         "name": "",
@@ -456,678 +965,264 @@
                 "p": "payload"
             }
         ],
-        "repeat": "5",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 210,
-        "y": 900,
-        "wires": [
-            [
-                "602169eb6e2947a5",
-                "85532eb1ec01c126",
-                "a8fc75ccaaac9ce6",
-                "c108c4f187ed9837"
-            ]
-        ]
-    },
-    {
-        "id": "6fb14cba07f1114c",
-        "type": "comment",
-        "z": "dbf64854dfe1af6c",
-        "name": "Send data to the chart and gauge",
-        "info": "// Inject every 1 second for see data in chart and gauge.",
-        "x": 630,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "f4fb12b20e7a2e05",
-        "type": "comment",
-        "z": "dbf64854dfe1af6c",
-        "name": "Send data to Database",
-        "info": "// send data to the database from DHT22 sensors every 30 seconds",
-        "x": 680,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "2f36ffc21f4d245a",
-        "type": "inject",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "30",
+        "repeat": "20",
         "crontab": "",
         "once": false,
         "onceDelay": "0.1",
         "topic": "",
         "payload": "true",
         "payloadType": "bool",
-        "x": 150,
-        "y": 460,
+        "x": 130,
+        "y": 540,
         "wires": [
             [
-                "43a5f5a270d584a2",
-                "986dcf914ffaaa01",
-                "36ce9f46e34e4061",
-                "881dba664ce1f0c0"
+                "659d553dd1734b29",
+                "8de1a1305824db02",
+                "08802aed2a4527ce",
+                "a86eda4f3a115586"
             ]
         ]
     },
     {
-        "id": "eb56f0f3a5f975d1",
+        "id": "659d553dd1734b29",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_1",
+        "dht": 22,
+        "pintype": "0",
+        "pin": 4,
+        "x": 440,
+        "y": 460,
+        "wires": [
+            [
+                "90e606e64cfcc998"
+            ]
+        ]
+    },
+    {
+        "id": "8de1a1305824db02",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_2",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "17",
+        "x": 440,
+        "y": 520,
+        "wires": [
+            [
+                "d86a502530a04228"
+            ]
+        ]
+    },
+    {
+        "id": "08802aed2a4527ce",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_3",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "18",
+        "x": 440,
+        "y": 580,
+        "wires": [
+            [
+                "61111c84d378a55d"
+            ]
+        ]
+    },
+    {
+        "id": "a86eda4f3a115586",
+        "type": "rpi-dht22",
+        "z": "dbf64854dfe1af6c",
+        "name": "",
+        "topic": "Device_4",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "23",
+        "x": 440,
+        "y": 640,
+        "wires": [
+            [
+                "c70c8ac12b5d887d"
+            ]
+        ]
+    },
+    {
+        "id": "af3c1223db279087",
+        "type": "mysql",
+        "z": "dbf64854dfe1af6c",
+        "mydb": "d423deaf6e319b2e",
+        "name": "DHT22",
+        "x": 940,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7107053dfa0cb012",
         "type": "comment",
         "z": "dbf64854dfe1af6c",
-        "name": "Interval 30 seconds",
-        "info": "// To log in the data using interval for 30 seconds.",
-        "x": 130,
-        "y": 260,
+        "name": "Database",
+        "info": "// to store the data from the DHT22 sensor.",
+        "x": 940,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "165463519e6bc353",
-        "type": "comment",
+        "id": "90e606e64cfcc998",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "Display the Data to Dashboard",
-        "info": "// display the data of DHT22 sensor in gauge and chart.",
-        "x": 890,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "ee541efa44f01a03",
-        "type": "comment",
-        "z": "dbf64854dfe1af6c",
-        "name": "Display the Data to Dashboard",
-        "info": "// display the data of DHT22 sensor in gauge and chart.",
-        "x": 850,
-        "y": 1380,
-        "wires": []
-    },
-    {
-        "id": "bdd7b8bdb5ac4b23",
-        "type": "comment",
-        "z": "dbf64854dfe1af6c",
-        "name": "Display the Data to Dashboard",
-        "info": "// display the data of DHT22 sensor in gauge and chart.",
-        "x": 790,
-        "y": 1640,
-        "wires": []
-    },
-    {
-        "id": "e90c0e02a1bc8a21",
-        "type": "ui_gauge",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "2219bda37fd9a1b2",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1150,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "2632f507360fc3d3",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "2219bda37fd9a1b2",
-        "order": 2,
-        "width": 6,
-        "height": 4,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n//msg.topic = \"insert into UpdateDHT (DeviceID,Temperature,Humidity) values ('1','\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\n// Update Data in Database.\nmsg.topic = \"update UpdateDHT set Temperature = '\"+`${temp}°C`+\"', Humidity = '\"+`${hum}%`+\"' where DeviceID = 1\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1130,
-        "y": 920,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 460,
         "wires": [
-            []
+            [
+                "af3c1223db279087"
+            ]
         ]
     },
     {
-        "id": "242d7066b916a393",
-        "type": "ui_gauge",
+        "id": "69738e1b3f3b302a",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "2219bda37fd9a1b2",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1120,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "10171e75f3c95834",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "2219bda37fd9a1b2",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload; \nlet hum = msg.humidity; \nmsg.payload = `${temp}°C / ${hum}%`;\n\n// Insert Data in Database.\nmsg.topic = \"insert into Device1 (Temperature,Humidity) values ('\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1110,
-        "y": 880,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 160,
         "wires": [
-            []
+            [
+                "7420af185f680d7d"
+            ]
         ]
     },
     {
-        "id": "1e45118534d2cd96",
-        "type": "ui_gauge",
+        "id": "f7acb4f0e16111e6",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "081d59f62d4ef19b",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1120,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "c1246f12dc075378",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "081d59f62d4ef19b",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n// Insert Data in Database.\nmsg.topic = \"insert into Device2 (Temperature,Humidity) values ('\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1110,
-        "y": 1100,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 220,
         "wires": [
-            []
+            [
+                "7420af185f680d7d"
+            ]
         ]
     },
     {
-        "id": "cec4d014c0ab70d2",
-        "type": "ui_gauge",
+        "id": "975f6fcf073d6e57",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "081d59f62d4ef19b",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1130,
-        "y": 1160,
-        "wires": []
-    },
-    {
-        "id": "644fc050d2d3afca",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "081d59f62d4ef19b",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n// Insert Data in Database.\nmsg.topic = \"insert into Device3 (Temperature,Humidity) values ('\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1110,
-        "y": 1200,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 280,
         "wires": [
-            []
+            [
+                "7420af185f680d7d"
+            ]
         ]
     },
     {
-        "id": "fbdcfd8b7262d585",
-        "type": "ui_gauge",
+        "id": "c5e9f1f4aaa791a6",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "9bdf8d5e3e644d86",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1100,
-        "y": 1280,
-        "wires": []
-    },
-    {
-        "id": "f5169b68f51b4121",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "9bdf8d5e3e644d86",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n// Insert Data in Database.\nmsg.topic = \"insert into Device4 (Temperature,Humidity) values ('\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1090,
-        "y": 1320,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 340,
         "wires": [
-            []
+            [
+                "7420af185f680d7d"
+            ]
         ]
     },
     {
-        "id": "3f74a0e87f34fd3e",
-        "type": "ui_gauge",
+        "id": "c70c8ac12b5d887d",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "9bdf8d5e3e644d86",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1110,
-        "y": 1380,
-        "wires": []
-    },
-    {
-        "id": "fed62a8e5f52c38e",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "9bdf8d5e3e644d86",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n//msg.topic = \"insert into UpdateDHT (DeviceID,Temperature,Humidity) values ('4','\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\n// Update Data in Database.\nmsg.topic = \"update UpdateDHT set Temperature = '\"+`${temp}°C`+\"', Humidity = '\"+`${hum}%`+\"' where DeviceID = 4\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1090,
-        "y": 1420,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 640,
         "wires": [
-            []
+            [
+                "af3c1223db279087"
+            ]
         ]
     },
     {
-        "id": "940abae0498a36a8",
-        "type": "ui_gauge",
+        "id": "61111c84d378a55d",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "353e13fa955ff818",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1100,
-        "y": 1520,
-        "wires": []
-    },
-    {
-        "id": "f217d83952ae1b6c",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "353e13fa955ff818",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n//msg.topic = \"insert into UpdateDHT (DeviceID,Temperature,Humidity) values ('3','\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\n// Update Data in Database.\nmsg.topic = \"update UpdateDHT set Temperature = '\"+`${temp}°C`+\"', Humidity = '\"+`${hum}%`+\"' where DeviceID = 3\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1090,
-        "y": 1560,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 580,
         "wires": [
-            []
+            [
+                "af3c1223db279087"
+            ]
         ]
     },
     {
-        "id": "fe2da98d427526d1",
-        "type": "ui_gauge",
+        "id": "d86a502530a04228",
+        "type": "function",
         "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "353e13fa955ff818",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1110,
-        "y": 1620,
-        "wires": []
-    },
-    {
-        "id": "e2f2cd71aa10a4f2",
-        "type": "ui_chart",
-        "z": "dbf64854dfe1af6c",
-        "name": "",
-        "group": "353e13fa955ff818",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "Temp and Humidity",
+        "func": "let temp = msg.payload;\nlet hum = msg.humidity;\nmsg.payload = `${temp}°C / ${hum}%`;\n\n//msg.topic = \"insert into UpdateDHT (DeviceID,Temperature,Humidity) values ('2','\"+`${temp}°C`+\"', '\"+`${hum}%`+\"')\";\n\n// Update Data in Database.\nmsg.topic = \"update UpdateDHT set Temperature = '\"+`${temp}°C`+\"', Humidity = '\"+`${hum}%`+\"' where DeviceID = 2\";\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1090,
-        "y": 1660,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 520,
         "wires": [
-            []
+            [
+                "af3c1223db279087"
+            ]
         ]
     },
     {
@@ -1141,22 +1236,10 @@
         "charset": "UTF8"
     },
     {
-        "id": "5c0970eae8f917ba",
-        "type": "remote-config",
-        "name": "Node-RED UI",
-        "host": "localhost",
-        "protocol": "http",
-        "port": "1880",
-        "baseurl": "/ui",
-        "instancehash": "ajstuquooptvuef4zzdlwux04o9j6x72is8fkodl83meg9iflgbmozfek074qyxd",
-        "server": "nodered02.remote-red.com",
-        "region": "de"
-    },
-    {
-        "id": "2219bda37fd9a1b2",
+        "id": "0dad173bd8838df7",
         "type": "ui_group",
         "name": "Device_1",
-        "tab": "f378c034cf85ecf1",
+        "tab": "0fc57ab8dbc649c6",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -1164,10 +1247,10 @@
         "className": ""
     },
     {
-        "id": "081d59f62d4ef19b",
+        "id": "10fb14fa6184d819",
         "type": "ui_group",
         "name": "Device_2",
-        "tab": "f378c034cf85ecf1",
+        "tab": "0fc57ab8dbc649c6",
         "order": 2,
         "disp": true,
         "width": "6",
@@ -1175,10 +1258,10 @@
         "className": ""
     },
     {
-        "id": "9bdf8d5e3e644d86",
+        "id": "5df125248bbcd45a",
         "type": "ui_group",
         "name": "Device_3",
-        "tab": "f378c034cf85ecf1",
+        "tab": "0fc57ab8dbc649c6",
         "order": 3,
         "disp": true,
         "width": "6",
@@ -1186,10 +1269,10 @@
         "className": ""
     },
     {
-        "id": "353e13fa955ff818",
+        "id": "536fcc52f4b4f3c8",
         "type": "ui_group",
         "name": "Device_4",
-        "tab": "f378c034cf85ecf1",
+        "tab": "0fc57ab8dbc649c6",
         "order": 4,
         "disp": true,
         "width": "6",
@@ -1197,9 +1280,9 @@
         "className": ""
     },
     {
-        "id": "f378c034cf85ecf1",
+        "id": "0fc57ab8dbc649c6",
         "type": "ui_tab",
-        "name": "DHT22",
+        "name": "Jln_UtaraDHT",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
